@@ -1,7 +1,8 @@
 from flask import redirect, url_for, render_template, request, flash, abort
 from flask_login import login_user, logout_user, current_user, login_required
-from app import app, db
+from . import app, db 
 from app.models import User, Skill, Goal
+
 
 @app.route('/')
 def index():
