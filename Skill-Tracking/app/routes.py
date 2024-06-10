@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from . import app, db 
 from app.models import User, Skill, Goal
 
-
+def register_routes(app):
 @app.route('/')
 def index():
     print("Inside index route")
