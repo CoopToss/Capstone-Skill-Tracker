@@ -14,7 +14,8 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
 
-    from .routes import routes
-    app.register_blueprint(routes)
-
+    with app.app_context():
+        from .routes import routes
+        app.register_blueprint(routes)
+        
     return app
