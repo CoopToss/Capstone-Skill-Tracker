@@ -1,0 +1,19 @@
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return f'<User {self.username}>'
+
+# Create the tables (if they don't exist already)
+db.create_all()
+
+# Populate the tables
+user1 = User(username='john_doe', email='john@example.com')
+user2 = User(username='jane_doe', email='jane@example.com')
+
+# Add the users to the session and commit the changes to the database
+db.session.add(user1)
+db.session.add(user2)
+db.session.commit()
