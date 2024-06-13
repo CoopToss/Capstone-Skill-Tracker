@@ -1,5 +1,5 @@
 import os
-SQLALCHEMY_DATABASE_URI = 'postgresql://cooper:cooper12@localhost:5432/skill-tracking'
+SQLALCHEMY_DATABASE_URI = 'postgresql://cooper:cooper12@localhost:5433/skill-tracking'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
