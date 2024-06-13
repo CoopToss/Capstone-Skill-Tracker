@@ -9,7 +9,7 @@ class Config(object):
 
     # PostgreSQL database URI
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'postgresql://cooper:cooper12@localhost:5432/skill-tracking'
+        'postgresql://cooper:cooper12@localhost:5433/skill-tracking'
 
     # Disable tracking modifications to avoid unnecessary overhead
     SQLALCHEMY_TRACK_MODIFICATIONS = False
