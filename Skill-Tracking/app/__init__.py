@@ -1,9 +1,10 @@
 from flask import Flask
 from config import Config
 
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 login_manager = LoginManager()
 
 def create_app():
@@ -16,6 +17,9 @@ def create_app():
     with app.app_context():
         from .routes import routes
         app.register_blueprint(routes, url_prefix='/')
+        db.app = app
+        db.init_app(app)
+        db.create_all()
 
     @login_manager.user_loader
     def load_user(user_id):
