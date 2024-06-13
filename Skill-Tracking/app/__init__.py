@@ -1,3 +1,5 @@
+# __init__.py
+
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -20,7 +22,7 @@ def create_app():
         login_manager.init_app(app)
 
         # Import models here to avoid circular imports
-        from .models import User  
+        from .models import User  # Replace with your actual User model
         
         # Create database tables (if they don't exist)
         with app.app_context():
