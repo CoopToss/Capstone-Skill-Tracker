@@ -1,0 +1,19 @@
+{
+  "name": "capstone-skill-tracker",
+  "version": "1.0.0",
+  "description": "A website designed to keep track of a user's skills and the time they put into each one.",
+  "main": "wsgi.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoopToss/Capstone-Skill-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoopToss/Capstone-Skill-Tracker/issues"
+  },
+  "homepage": "https://github.com/CoopToss/Capstone-Skill-Tracker#readme"
+}

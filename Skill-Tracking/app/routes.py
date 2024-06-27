@@ -1,6 +1,7 @@
 from flask import Blueprint, redirect, url_for, render_template, request, flash, abort
 from flask_login import login_user, logout_user, current_user, login_required
-from app.models import User, Skill, Goal, db
+from app import db
+from app.models import User, Skill, Goal
 
 routes = Blueprint('routes', __name__)
 

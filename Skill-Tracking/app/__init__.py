@@ -1,11 +1,9 @@
-# __init__.py
-
 from flask import Flask
 from config import Config
+from .database import db
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-# Initialize extensions
 db = SQLAlchemy()
 login_manager = LoginManager()
 
@@ -13,28 +11,16 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # Initialize extensions within the app context
+    db.init_app(app)
+    login_manager.init_app(app)
+
     with app.app_context():
-        # Initialize SQLAlchemy
-        db.init_app(app)
-
-        # Initialize login manager
-        login_manager.init_app(app)
-
-        # Import models here to avoid circular imports
-        from .models import User 
-        
-        with app.app_context():
-            db.create_all()
-
-        # Register blueprints
         from .routes import routes
         app.register_blueprint(routes, url_prefix='/')
 
-    # Define the user_loader callback for Flask-Login
     @login_manager.user_loader
     def load_user(user_id):
-        from .models import User  # Import inside the function to avoid circular import
+        from .models import User  # Importing inside the function to avoid circular imports
         return User.query.get(int(user_id))
-
+        
     return app

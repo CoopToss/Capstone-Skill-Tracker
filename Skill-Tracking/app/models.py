@@ -1,8 +1,7 @@
+from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -30,7 +29,6 @@ class Goal(db.Model):
     associated_user = db.relationship('User', backref='associated_goals')
 
 class Skill(db.Model):
-    __tablename__ = 'skill'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(140))
     hours_logged = db.Column(db.Integer, default=0)
@@ -41,7 +39,8 @@ class Skill(db.Model):
 
 class SkillLog(db.Model):
     __tablename__ = 'skill_logs'
+
     id = db.Column(db.Integer, primary_key=True)
     hours = db.Column(db.Integer)
     date = db.Column(db.DateTime)
-    skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'))
+    skill_id = db.Column(db.Integer, db.ForeignKey('skills.id'))
